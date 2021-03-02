@@ -1,4 +1,4 @@
-<Project Sdk="MicroSoft.NET.Sdk">
+<Project Sdk="MicroSoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
