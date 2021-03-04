@@ -99,6 +99,6 @@ namespace ToDoList.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
-    
+
   }
 }
