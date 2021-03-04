@@ -12,6 +12,6 @@ namespace ToDoList.Controllers
       List<Category> allCategories = Category.GetAll();
       return View(allCategories);
     }
-    
+
   }
 }
