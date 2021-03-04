@@ -6,7 +6,7 @@ namespace ToDoList.Models
   {
     public string Description { get; set; }
     public int Id { get; }
-    private static List<Item> _instances = new List<Item> {};
+    private static List<Item> _instances = new List<Item> { };
 
     public Item(string description)
     {
@@ -24,7 +24,6 @@ namespace ToDoList.Models
     {
       _instances.Clear();
     }
-    
     public static Item Find(int searchId)
     {
       return _instances[searchId-1];
