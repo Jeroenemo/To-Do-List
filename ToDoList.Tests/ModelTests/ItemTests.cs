@@ -7,14 +7,15 @@ using System;
 namespace ToDoList.Tests
 {
   [TestClass]
-  public class ItemTest : IDisposable
+  public class ItemTests : IDisposable
   {
 
     public void Dispose()
     {
       Item.ClearAll();
     }
-    public void ItemTests()
+
+    public ItemTests()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=epicodus;port=3306;database=to_do_list_test;";
     }
