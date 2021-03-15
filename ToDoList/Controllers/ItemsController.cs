@@ -59,10 +59,6 @@ namespace ToDoList.Controllers
     [HttpPost]
     public ActionResult Edit(Item item, int CategoryId)
     {
-      if (CategoryId != 0)
-      {
-        _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
-      }
       _db.Entry(item).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");

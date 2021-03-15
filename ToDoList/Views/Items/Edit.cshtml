@@ -1,3 +1,6 @@
+
+
+
 @{
   Layout = "_Layout";
 }
@@ -15,8 +18,11 @@
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)
 
-  @Html.Label("Select category")
-  @Html.DropDownList("CategoryId")
+  @* @Html.Label("Select category")
+  @Html.DropDownList("CategoryId") *@
+
+  @Html.Label("Is this task complete?")
+  @Html.CheckBoxFor(model => model.IsComplete)
 
   <input type="submit" value="Save" />
 }
