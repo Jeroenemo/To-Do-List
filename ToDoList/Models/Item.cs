@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ToDoList.Models
 {
@@ -12,6 +14,9 @@ namespace ToDoList.Models
     public int ItemId { get; set; }
     public string Description { get; set; }
     public bool IsComplete { get;  set; }
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    public DateTime DueDate { get; set; }
 
     public virtual ICollection<CategoryItem> JoinEntities { get;}
   }

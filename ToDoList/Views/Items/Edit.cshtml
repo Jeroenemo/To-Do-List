@@ -18,8 +18,8 @@
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)
 
-  @* @Html.Label("Select category")
-  @Html.DropDownList("CategoryId") *@
+  @Html.LabelFor(model => model.DueDate)
+  @Html.EditorFor(model => model.DueDate)
 
   @Html.Label("Is this task complete?")
   @Html.CheckBoxFor(model => model.IsComplete)

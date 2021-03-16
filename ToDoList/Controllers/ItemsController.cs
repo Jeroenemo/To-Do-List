@@ -18,7 +18,7 @@ namespace ToDoList.Controllers
 
     public ActionResult Index()
     {
-      return View(_db.Items.ToList());
+      return View(_db.Items.OrderBy(item => item.DueDate).ToList());
     }
 
     public ActionResult Create()
@@ -30,6 +30,7 @@ namespace ToDoList.Controllers
     [HttpPost]
     public ActionResult Create(Item item, int CategoryId)
     {
+
       _db.Items.Add(item);
       _db.SaveChanges();
       if (CategoryId != 0)
