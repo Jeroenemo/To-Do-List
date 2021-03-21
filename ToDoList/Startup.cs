@@ -18,7 +18,7 @@ namespace ToDoList
         .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
-
+    
     public IConfigurationRoot Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
