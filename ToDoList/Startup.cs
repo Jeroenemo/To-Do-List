@@ -18,7 +18,7 @@ namespace ToDoList
         .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
-    
+
     public IConfigurationRoot Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
@@ -32,6 +32,18 @@ namespace ToDoList
       services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<ToDoListContext>()
         .AddDefaultTokenProviders();
+
+      //OVERRIDE DEFAULT USER REQUIREMENTS FOR TESTING
+      services.Configure<IdentityOptions>(options =>
+      {
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 0;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredUniqueChars = 0;
+      });
+
     }
 
     public void Configure(IApplicationBuilder app)
