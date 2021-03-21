@@ -1,24 +1,33 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using ToDoList.Models;
 
 namespace ToDoList.Controllers
 {
+  [Authorize]
   public class ItemsController : Controller
   {
     private readonly ToDoListContext _db;
-
-    public ItemsController(ToDoListContext db)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public ItemsController(UserManager<ApplicationUser> userManager, ToDoListContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-      return View(_db.Items.OrderBy(item => item.DueDate).ToList());
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      var userItems = _db.Items.Where(entry => entry.User.Id == currentUser.Id).ToList();
+      return View(userItems);
     }
 
     public ActionResult Create()
