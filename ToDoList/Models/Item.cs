@@ -17,7 +17,7 @@ namespace ToDoList.Models
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public DateTime DueDate { get; set; }
-
+    public virtual ApplicationUser User { get; set; } 
     public virtual ICollection<CategoryItem> JoinEntities { get; }
   }
 }
